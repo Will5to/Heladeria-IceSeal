@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice-Seal Delivery</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4285f4;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #contact-info {
+            display: flex;
+            justify-content: space-around;
+            background-color: #e0e0e0;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        #contact-info div {
+            text-align: center;
+        }
+
+        #contact-info img {
+            width: 50px;
+            height: 50px;
+        }
+
+        #order-form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #order-form h2 {
+            color: #4285f4;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        select, input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3079c5;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ice-Seal Delivery</h1>
+        <p>¡Tu helado favorito a un solo clic!</p>
+        <nav>
+            <a href="index.html">Página principal</a> | 
+            <a href="cartilla.html">Cartilla</a>
+        </nav>
+    </header>
+
+    <section id="contact-info">
+        <div>
+            <img src="https://assets.stickpng.com/images/5a4525cd546ddca7e1fcbc84.png" alt="Teléfono">
+            <p>Teléfono: +1 123 456 789</p>
+        </div>
+        <div>
+            <img src="https://images.vexels.com/media/users/3/130187/isolated/preview/5e8d2205ecc8cde3235581fc5ecfa430-icono-de-contorno-de-correo-electronico.png" alt="Correo">
+            <p>Correo: pcalderonm@notgmail.com</p>
+        </div>
+    </section>
+
+    <section id="order-form">
+        <h2>Realiza tu pedido</h2>
+        <form action="#" method="post">
+            <label for="flavor">Selecciona tu sabor:</label>
+            <select id="flavor" name="flavor" onchange="calcularPrecio()">
+                <option value="vanilla" data-precio="6.95">Vainilla</option>
+                <option value="chocolate" data-precio="7.80">Chocolate</option>
+                <option value="fresa" data-precio="8.5">Fresa</option>
+              <option value="vanilla" data-precio="7.50">Lúcuma</option>
+              <option value="vanilla" data-precio="7.00">Mango</option>
+              <option value="vanilla" data-precio="8.00">Chicle</option>
+              <option value="vanilla" data-precio="8.00">Tumbo</option>
+              <option value="vanilla" data-precio="8.00">Algarrobina</option>
+              <option value="vanilla" data-precio="8.00">Coco</option>
+              <option value="vanilla" data-precio="7.00">Plátano</option>
+              <option value="vanilla" data-precio="8.00">Limón</option>
+              <option value="vanilla" data-precio="7.00">Sauco</option>
+              <option value="vanilla" data-precio="9.00">Cerveza</option>
+              <option value="vanilla" data-precio="10.50">Masmelow</option>
+              <option value="vanilla" data-precio="10.50">M&M</option>
+              <option value="vanilla" data-precio="10.50">Brownie</option>
+              <option value="vanilla" data-precio="10.50">Charada</option>
+              <option value="vanilla" data-precio="10.50">Chocochips</option>
+              <option value="vanilla" data-precio="10.50">Chocomenta</option>
+              <option value="vanilla" data-precio="10.50">Manjar</option>
+              
+            </select>
+
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" min="1" oninput="calcularPrecio()" required>
+
+            <label for="total-price">Precio total:</label>
+            <input type="text" id="total-price" name="total-price" readonly>
+
+             <button type="button" onclick="redirigirAVideo()">Realizar Pedido</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Ice-Seal. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function calcularPrecio() {
+    // Obtener el valor seleccionado del menú desplegable (sabor)
+    const flavorSelect = document.getElementById('flavor');
+    const selectedFlavor = flavorSelect.options[flavorSelect.selectedIndex];
+    
+    // Obtener el precio base del atributo 'data-precio'
+    const precioBase = parseFloat(selectedFlavor.getAttribute('data-precio'));
+
+    // Obtener el valor de la cantidad
+    const cantidad = document.getElementById('quantity').value;
+
+    // Calcular el precio total
+    const precioTotal = cantidad * precioBase;
+    // Mostrar el precio total en el campo de texto
+    document.getElementById('total-price').value = `S/${precioTotal.toFixed(2)}`;
+}
+function redirigirAVideo() {
+            // Cambia la URL del video de YouTube con el enlace deseado
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }
+
+    </script>
+</body>
+
+</html>
